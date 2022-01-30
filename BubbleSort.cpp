@@ -11,7 +11,7 @@ int main(){
         cin>>arr[i];
     }
     int count = 1;
-    while (count < n){
+    while (count < n-1){
         for(int i = 0; i < n-count; i++){
             if(arr[i]>arr[i+1]){
                 int temp = arr[i];
