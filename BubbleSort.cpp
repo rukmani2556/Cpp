@@ -10,9 +10,9 @@ int main(){
     for (int i = 0; i < n; i++){
         cin>>arr[i];
     }
-    int count = 1;
-    while (count < n-1){
-        for(int i = 0; i < n-count; i++){
+    int count = 1;  // Intialising the no. of iteration
+    while (count < n-1){    // For iterating over the entire array
+        for(int i = 0; i < n-count; i++){   // For swapping the elements
             if(arr[i]>arr[i+1]){
                 int temp = arr[i];
                 arr[i] = arr[i+1];
