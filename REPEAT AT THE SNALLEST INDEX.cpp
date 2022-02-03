@@ -5,7 +5,7 @@ TIME COMPLEXITY = O(n)
 #include<bits/stdc++.h>
 using namespace std;
 int main(){
-    int n;;cin>>n;
+    int n;cin>>n;
     int arr[n+1];
     arr[n] = -1;
     for (int i = 0; i < n; i++ ) {
@@ -17,11 +17,11 @@ int main(){
         idx[i] = -1;
     }
     int minidx = INT_MAX;
-    for(int i=0;i<n;i++){
-        if(idx[arr[i]]!=-1){
+    for(int i = 0; i < n; i++){
+        if(idx[arr[i]] != -1){
             minidx = min(minidx, idx[arr[i]]);
         }else{
-            idx[arr[i]]=i;
+            idx[arr[i]] = i;
         }    
     }  
     if(minidx == INT_MAX){
@@ -36,5 +36,4 @@ int main(){
 8 
 8 6 4 1 9 5 9 4 
 3
-
 */
