@@ -2,65 +2,45 @@
 TIME COMPLEXITY = O(n^2)
 */
 
-#include <iostream>  
-using namespace std;  
-/* The program will print the indexes if the currentsum is equal to the sum, else it will print sum will not found */  
-int subarray ( int arr[] , int n , int sum )  
-{  
-    int currentsum, i, j, k ;  
-  
-    // Start with initial index 0 element  
-    for ( i = 0 ; i < n ; i++ )   
-    {  
-        currentsum = arr[ i ] ;  
-  
-        // try all subarrays starting with ' i '  
-        for ( j = i + 1 ; j <= n ; j++ )   
-        {  
-            if ( currentsum == sum )   
-            {     
-            cout<<  " Sum found between indexes  " <<  i << " and " <<  j - 1 << endl ;  
-                cout << " Printing the required subarray : " << endl ;  
-                for( k = i ; k <= j-1 ; k++ )  
-                {  
-                    cout << arr[ k ] << " " ;  
-                }  
-                return 0 ;  
-            }  
-            if ( currentsum  >  sum || j == n )  
-                break ;  
-            currentsum = currentsum + arr[ j ] ;  
-        }  
-          
-    }  
-        cout << endl ;  
-        cout  << " No subarray found " << endl ;  
-}  
-  
-int main()  
-{  
-    int i ,  A[ 100 ] , n , sum ;  
-    cout << " Enter number of elements present in the array : " << endl ;  
-    cin >> n ;  
-    cout << " Enter array :  " << endl ;  
-    for ( i = 0 ; i < n ; i++ )  
-    {  
-        cin >> A [ i ] ;   
-    }  
-    cout << " Enter sum value:  " ;  
-    cin >> sum ;  
-    subarray ( A , n , sum ) ;  
-  
-    return 0 ;  
-}  
-
+#include<iostream>
+#include<limits>
+using namespace std;
+int main(){
+    int n,s;cin>>n>>s;
+    int A[n];
+    for(int i = 0; i < n; i++){
+        cin>>A[i];
+    }
+    int i = 0, j = 0;
+    int end = -1, start = -1;
+    int cur_sum = 0;
+    while (j < n && cur_sum + A[j] <= s){
+        cur_sum += A[j];
+        j++;        
+    }
+    if(cur_sum == s){
+        cout<<i+1<<" "<<j<<endl;
+        return 0;
+    }
+    while(j < n){
+        cur_sum += A[j];
+        while(cur_sum > s){
+           cur_sum -= A[i];
+           i++;
+        }
+        if (cur_sum == s){
+            start = i;
+            end = j;
+            break;
+        }
+        j++;
+    }
+    cout<<start<<" "<<end;
+    return 0;
+}
 /*
-Enter number of elements present in the array : 
 7
- Enter array :  
+12
 1 2 3 4 5 6 7  
- Enter sum value:  12
- Sum found between indexes  2 and 4
- Printing the required subarray : 
-3 4 5 
+2 4
 */
